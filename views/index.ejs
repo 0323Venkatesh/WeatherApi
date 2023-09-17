@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Check</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class = "container">
+        <div class="time">
+             <%= dateType %> 
+        </div>
+        <div class="card">
+            <div class="search">
+                <form action="/submit" method="POST">
+                    <input type="text" placeholder="Enter City Name" name="city" spellcheck="false">
+                    <input type="submit" value="Search" class="button">
+                </form>
+                
+            </div>
+        </div>
+       <% if(locals.response){%>
+        <div class="weather">
+            
+            <h1 class="temp"><%= response.main.temp %>°C</h1>
+            <h2 class="city" class="text"><%= city %></h2>
+            <div class="details">
+                <div class="col1">
+                    <div>
+                        <p class="humidity"><%= response.main.humidity %></p>
+                        <p class="text">Humidity</p>
+                    </div>
+                </div>
+                <div class="col2">
+                    <div>
+                            <p class="wind"><%= response.wind.speed %>Km/h</p>
+                            <p class="text">Wind Speed</p>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
